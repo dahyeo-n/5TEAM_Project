@@ -66,14 +66,14 @@
         ></textarea>
         <label for="floatingTextarea2">리뷰</label>
       </div>
-      <!-- star -->
+      <!-- starCnt -->
       <div class="form-floating">
         <select
           class="starCnt form-select"
           id="floatingSelect"
           aria-label="Floating label select example"
         >
-          <option selected>별점선택</option>
+          <option selected></option>
           <option value="⭐">⭐</option>
           <option value="⭐⭐">⭐⭐</option>
           <option value="⭐⭐⭐">⭐⭐⭐</option>
@@ -82,9 +82,11 @@
         </select>
         <label for="floatingSelect">⭐</label>
       </div>
-      <button type="button" class="input-btn btn-dark">입력</button>
+      <button id="inputBtn" type="button" class="btn btn-outline-dark">
+        입력
+      </button>
       <!-- Inner HTML -->
-      <div class="valuetest"></div>
+      <div class="createForm"></div>
     </div>
   </body>
 </html>
