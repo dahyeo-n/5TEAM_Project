@@ -41,7 +41,7 @@ button.input-form-btn {
   border-radius: 2px;
 }
 
-/* 데이터 CSS 영역 */
+/* 데이터 CSS 영역 토글다시 추가시 display none해주기 */
 .toggleVal {
   display: none;
   margin-top: 20px;
