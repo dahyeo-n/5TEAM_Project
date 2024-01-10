@@ -61,7 +61,7 @@ inputformbtn.addEventListener('click', function (e) {
     for (let i = 0; i < cards.length; i++) {
       let title = cards[
         i
-      ].childNodes[1].childNodes[0].childNodes[3].childNodes[1].textContent.replace(
+      ].childNodes[1].childNodes[0].childNodes[3].childNodes[1].replace(
         /\s/g,
         ''
       );
@@ -85,6 +85,7 @@ let scroll = 0; //스크롤 얼마나 움직이는지
 
 window.addEventListener('scroll', function () {
   scroll = window.scrollY;
+
   if (scroll < 900) {
     gotop.style.display = 'none';
   } else {
@@ -100,13 +101,3 @@ gotop.addEventListener('click', function (e) {
     behavior: 'smooth',
   });
 });
-
-// gotop.addEventListener('click', function () {
-//   let timer = setInterval(function () {
-//     if (scroll != 0) {
-//       window.scrollBy(0, -50);
-//     } else {
-//       clearInterval(timer);
-//     }
-//   });
-// });
