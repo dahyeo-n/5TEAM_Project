@@ -44,4 +44,26 @@ button.input-form-btn {
 /* 데이터 CSS 영역 */
 .toggleVal {
   display: none;
+  margin-top: 20px;
+}
+
+.toggleBtn {
+  display: flex;
+  justify-content: center;
+}
+.toggleBtn > button {
+  margin-top: 10px;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 1rem;
+}
+
+.valueBox {
+  display: flex;
+  justify-content: center;
+  border: 5px solid;
+  margin-top: 10px;
 }
