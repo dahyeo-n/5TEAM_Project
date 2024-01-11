@@ -1,3 +1,4 @@
+// movie 카드 함수
 export const drawmovie = async () => {
   const movieList = await fetchmovieList();
   console.log(movieList);
@@ -20,6 +21,7 @@ export const drawmovie = async () => {
     )
     .join("");
 
+  // 카드 클릭시 페이지 넘어가고 영화 아이디 저장
   cardList.addEventListener("click", clickCard);
 
   function clickCard(event) {
@@ -27,38 +29,38 @@ export const drawmovie = async () => {
 
     if (event.target.matches(".image")) {
       const id = event.target.id;
-      saveMovieCast(id);
+      storegeAdd(id);
     }
   }
 };
 
+//로컬스토리지 저장 함수
 function storegeAdd(keyword) {
-  localStorage.setItem("cast", JSON.stringify(keyword));
+  const data = localStorage.setItem("cast", keyword);
+  return data;
 }
 
-const saveMovieCast = async (id) => {
+// id로 영화 검색후 배우 데이터 가져오기 및 카드 추가
+export const drawMovieCast = async (id) => {
   const castList = await fetchmovieCast(id);
-  storegeAdd(castList);
-  console.log(castList);
-};
-
-export const drawMovieCast = (cast) => {
   const cardList = document.querySelector("#castCard");
-  cardList.innerHTML = cast
+
+  cardList.innerHTML = castList
     .map(
       (cast) => `
-<li id="container" class="container" >
-<img
-id = "${cast.id}"
-class = "image"
-src="https://image.tmdb.org/t/p/w200${cast.profile_path}" alt="이미지가 없습니다.">
-  <p class="title"> ${cast.character}역</p><br>
-  <p class="overview">${cast.original_name}</p><br>
-</li>`
+  <li id="container" class="container" >
+  <img
+  id = "${cast.id}"
+  class = "image"
+  src="https://image.tmdb.org/t/p/w200${cast.profile_path}" alt="이미지가 없습니다.">
+    <p class="title"> ${cast.character}역</p><br>
+    <p class="overview">${cast.original_name}</p><br>
+  </li>`
     )
     .join("");
 };
 
+// API 데이터 함수
 async function fetchmovieList() {
   const options = {
     method: "GET",
@@ -77,6 +79,7 @@ async function fetchmovieList() {
   return data.results;
 }
 
+// API 데이터 함수
 async function fetchmovieCast(id) {
   const options = {
     method: "GET",
