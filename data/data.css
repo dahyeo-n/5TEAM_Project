@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+/* 헤더영역 */
+.container {
+  height: 100vh;
+}
+h2 {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  text-align: center;
+
+  justify-content: center;
+  align-items: center;
+}
+h2 > i {
+  transform: translateY(-2.6px);
+}
+
+/* 검색영역 */
+.serch {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 1px solid red;
+}
+#inputBtn {
+  width: 150px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.input-form {
+  width: 300px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+button.input-form-btn {
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+/* 데이터 CSS 영역 토글다시 추가시 display none해주기 */
+.toggleVal {
+  display: none;
+  margin-top: 20px;
+}
+
+.toggleBtn {
+  display: flex;
+  justify-content: center;
+}
+.toggleBtn > button {
+  margin-top: 10px;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 1rem;
+}
+
+.valueBox {
+  display: flex;
+  justify-content: center;
+  border: 5px solid;
+  margin-top: 10px;
+}
