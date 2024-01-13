@@ -49,9 +49,7 @@ function moviesAPI(response) {
         cardList.insertAdjacentHTML('beforeend', temp_hteml);
     }
     console.log(moviesInfo);
-    function maincard() {
-
-    }
+    // 영화 API 정보 받을 수 있는 영역
 }
 
 function test(e) {
@@ -61,7 +59,7 @@ function test(e) {
 
 let inputformbtn = document.querySelector('.input-form-btn');
 inputformbtn.addEventListener('click', function (e) {
-    e.preventDefault(); // a 태그나 submit 태그는 누르게 되면 href를 통해 이동하거나 창이 새로고침하여 실행되는데, 이를 막아줌
+    e.preventDefault(); // a 태그나 submit 태그는 누르게 되면 href를 통해 이동하거나 창이 새로고침하여 실행되는데, preventDefault가 이를 막아줌
     let inputform = document
         .querySelector('.input-form')
         .value.replace(/\s/g, '');
@@ -107,6 +105,7 @@ inputformbtn.addEventListener('click', function (e) {
 // console.log(cardAll);
 
 // 2-2. 클릭한 영화의 id 가져오기 (card class 가져오기)
+// 아래 코드로 HTML에 있는 id값 가져올 수 있음
 // id="cardId"
 const clickedCard = document.getElementById('container');
 // function test(e) {
@@ -132,9 +131,7 @@ if (moviesInfo) {
 
 
 // 3. 카드-페이지 연결 확인
-
 // 4. 각각의 영화 정보 구역 나누기
-
 // 5. HOME 이동하는 버튼 및 기능 구현
 
 
