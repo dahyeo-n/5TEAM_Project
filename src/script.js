@@ -47,15 +47,16 @@ function moviesApi(response) {
   }
 }
 
-let inputformbtn = document.querySelector('#main-card');
-inputformbtn.addEventListener('click', function (e) {
+
+let inputformbtn = document.querySelector(".input-form-btn");
+inputformbtn.addEventListener("click", function (e) {
   e.preventDefault();
   let inputform = document
-    .querySelector('#main-card')
-    .value.replace(/\s/g, '');
-  let cards = document.querySelectorAll('.col');
-  let searchNone = document.querySelector('.searchNone');
-  let searchresult = false;
+    .querySelector(".input-form")
+    .value.replace(/\s/g, "");
+  let cards = document.querySelectorAll(".col");
+  let serchNone = document.querySelector(".serchNone");
+  let serchresult = false;
 
   if (inputform === "") {
     alert("검색어 입력해라");
@@ -75,8 +76,9 @@ inputformbtn.addEventListener('click', function (e) {
         cards[i].style.display = "block";
       }
     }
-    if (!searchresult) {
-      searchNone.style.display = 'block';
+
+    if (!serchresult) {
+      serchNone.style.display = "block";
     }
   }
 });

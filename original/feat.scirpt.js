@@ -49,6 +49,9 @@ function moviesAPI(response) {
         cardList.insertAdjacentHTML('beforeend', temp_hteml);
     }
     console.log(moviesInfo);
+    function maincard() {
+
+    }
 }
 
 function test(e) {
@@ -127,8 +130,8 @@ if (moviesInfo) {
     }
 };
 
-// 3. 카드-페이지 연결 확인
 
+// 3. 카드-페이지 연결 확인
 
 // 4. 각각의 영화 정보 구역 나누기
 
