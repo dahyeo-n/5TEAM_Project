@@ -48,10 +48,8 @@ export const drawMovieDetails = async (id) => {
 
   const cardDetailList = document.querySelector("#moviedetail");
   const moviedetailCast = document.querySelector("#moviedetailCast");
-  console.log(detailsList);
 
   let backdrop = detailsList.backdrop_path;
-  let poster = detailsList.poster_path;
   let title = detailsList.title;
   let overview = detailsList.overview;
   let average = detailsList.vote_average;
@@ -70,13 +68,10 @@ export const drawMovieDetails = async (id) => {
           <h1 class="display-5 fw-bold">${title}</h1>
           <!-- 영화 요약 내용 -->
           <p class="col-md-8 fs-4">${overview}</p>
-          <!-- 상세정보 & 리뷰 btn -->
-          <button id="detailedInfobtn" type="button" class="btn btn-outline-light">상세정보</button>
-          <button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
       </div>
   </div>
 </div>`;
-cardDetailList.insertAdjacentHTML("beforeend", tempHtml);
+cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
 
 let tempCastHtml = `<div
 style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 300px 5px 300px; padding: 10px 50px 10px 50px;">
