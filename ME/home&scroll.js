@@ -13,7 +13,7 @@ const detailedInfobtn = document.querySelector('#detailedInfobtn');
 detailedInfobtn.addEventListener('click', function () {
     // left: 가로축(x좌표), top: 세로축(y좌표) 지정
     window.scrollTo({ left: 0, top: 500 });
-    // console.log(window.scrollTo); // 스크롤 얼마나 움직이는지 확인
+    // console.log(window.scrollTo);
 })
 
 // 2. 리뷰 scroll adjustment
