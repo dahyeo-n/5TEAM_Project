@@ -8,7 +8,7 @@ export const drawmovie = async () => {
     .map(
       (movie) => `
   <li id="container" class="container">
-  <a href="test2.html">
+  <a href="./test2.html">
   <img 
   id = "${movie.id}"
   class = "image" 
@@ -60,6 +60,33 @@ export const drawMovieCast = async (id) => {
     .join("");
 };
 
+export const drawMovieDetails = async (id) => {
+  const detailsList = await fetchMovieDetails(id);
+  const cardList = document.querySelector("#detailsCard");
+  console.log(detailsList);
+
+  let backdrop = detailsList.backdrop_path;
+  let poster = detailsList.poster_path;
+  let title = detailsList.title;
+  let overview = detailsList.overview;
+  let vote_average = detailsList.vote_average;
+  let genres = detailsList.genres.map((e) => e.name);
+
+  let temp_html = `<li class="container">
+  <img 
+  class = "image" 
+  src="https://image.tmdb.org/t/p/w200${backdrop}" alt="이미지가 없습니다.">
+  <img 
+  class = "image" 
+  src="https://image.tmdb.org/t/p/w200${poster}" alt="이미지가 없습니다.">
+    <p class="title">영화 제목: ${title}</p><br>
+    <p>장르:${genres} </p>
+    <p class="overview">요약: ${overview}</p><br>
+    <p class="vote_average">별점: ${vote_average}</p>
+  </li>`;
+  cardList.insertAdjacentHTML("beforeend", temp_html);
+};
+
 // API MOVIE 데이터 함수
 async function fetchmovieList() {
   const options = {
@@ -100,6 +127,28 @@ async function fetchmovieCast(id) {
     );
     const data = await response.json();
     return data.cast;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function fetchMovieDetails(id) {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00",
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?language=ko-KO`,
+      options
+    );
+    const data = await response.json();
+    return data;
   } catch (err) {
     console.error(err);
   }
