@@ -1,106 +1,147 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>영화 상세정보</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/detailed.css" />
     <script type="module" src="./src/detailed.js"></script>
     <script type="module" src="./src/data.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="p-3 text-bg-dark">
-        <div class="headerwrap">
-            <div class="headerbox">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
-                    </a>
+      <div class="headerwrap">
+        <div class="headerbox">
+          <div
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+          >
+            <a
+              href="/"
+              class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+            >
+              <svg
+                class="bi me-2"
+                width="40"
+                height="32"
+                role="img"
+                aria-label="Bootstrap"
+              >
+                <use xlink:href="#bootstrap"></use>
+              </svg>
+            </a>
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li>
-                            <a href="#" class="nav-link px-2 text-danger"><b>FIVEFLIX</b></a>
-                        </li>
-                        <li>
-                            <a href="#" id="homeBtn" class="nav-link px-2 text-white" onclick="homePage()">HOME</a>
-                        </li>
-                        <a id="homeLink" href="./index.html"></a>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 검색창 인풋-버튼 사이 간격 좁히고 싶음 -->
-            <form id="search">
-                <div class="searchbtninDetailed">
-                    <form class="col-12 col-lg-auto mb-lg-0 me-lg-3" role="search">
-                        <input id="input-form" type="search" class="form-control form-control-dark text-bg-dark"
-                            placeholder="Movie name" aria-label="Search" />
-                    </form>
-                    <div class="text-end">
-                        <button id="searchBtn" type="button" class="btn btn-outline-light me-2">
-                            Search
-                        </button>
-                    </div>
-                </div>
-            </form>
+            <ul
+              class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+            >
+              <li>
+                <a href="#" class="nav-link px-2 text-danger"
+                  ><b>FIVEFLIX</b></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  id="homeBtn"
+                  class="nav-link px-2 text-white"
+                  onclick="homePage()"
+                  >HOME</a
+                >
+              </li>
+              <a id="homeLink" href="./index.html"></a>
+            </ul>
+          </div>
         </div>
+
+        <!-- 검색창 인풋-버튼 사이 간격 좁히고 싶음 -->
+        <form id="search">
+          <div class="searchbtninDetailed">
+            <form class="col-12 col-lg-auto mb-lg-0 me-lg-3" role="search">
+              <input
+                id="input-form"
+                type="search"
+                class="form-control form-control-dark text-bg-dark"
+                placeholder="Movie name"
+                aria-label="Search"
+              />
+            </form>
+            <div class="text-end">
+              <button
+                id="searchBtn"
+                type="button"
+                class="btn btn-outline-light me-2"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </header>
 
     <main id="moviedetail"></main>
 
     <!-- (장르, 평점 등)각 요소에 영화 정보 연결 -->
     <section id="moviedetailCast"></section>
-</body>
+  </body>
 
-<footer>
+  <footer>
     <!-- 댓글 기능 -->
     <!-- nameinput -->
     <div class="reviewBox">
-        <div id="review-txt" class="form-floating">
-            <input type="text" class="form-control" id="floatingInput" />
-            <label for="floatingInput">이름</label>
-        </div>
-        <!-- pwinput -->
-        <div id="review-txt" class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" />
-            <label for="floatingPassword">비밀번호</label>
-        </div>
-        <!-- review -->
-        <div id="review-txt" class="form-floating">
-            <textarea class="review form-control" id="floatingTextarea2"></textarea>
-            <label for="floatingTextarea2">리뷰</label>
-        </div>
-        <!-- starCnt -->
-        <div id="review-txt" class="form-floating">
-            <select class="starCnt form-select" id="floatingSelect" aria-label="Floating label select example">
-                <option selected></option>
-                <option value="⭐">⭐</option>
-                <option value="⭐⭐">⭐⭐</option>
-                <option value="⭐⭐⭐">⭐⭐⭐</option>
-                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
-                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
-            </select>
-            <label for="floatingSelect">⭐</label>
-        </div>
-        <div class="reviewbtn">
-            <button id="inputBtn" type="button" class="btn btn-outline-light">
-                입력
-            </button>
-            <button id="reviseBtn" type="button" class="btn btn-outline-light">
-                수정완료
-            </button>
-        </div>
-        <!-- Inner HTML -->
-        <div class="createForm" style="font-weight: bold; color: white;"></div>
+      <div id="review-txt" class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" />
+        <label for="floatingInput">이름</label>
+      </div>
+      <!-- pwinput -->
+      <div id="review-txt" class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" />
+        <label for="floatingPassword">비밀번호</label>
+      </div>
+      <!-- review -->
+      <div id="review-txt" class="form-floating">
+        <textarea class="review form-control" id="floatingTextarea2"></textarea>
+        <label for="floatingTextarea2">리뷰</label>
+      </div>
+      <!-- starCnt -->
+      <div id="review-txt" class="form-floating">
+        <select
+          class="starCnt form-select"
+          id="floatingSelect"
+          aria-label="Floating label select example"
+        >
+          <option selected></option>
+          <option value="⭐">⭐</option>
+          <option value="⭐⭐">⭐⭐</option>
+          <option value="⭐⭐⭐">⭐⭐⭐</option>
+          <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+          <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+        </select>
+        <label for="floatingSelect">⭐</label>
+      </div>
+      <div class="reviewbtn">
+        <button id="inputBtn" type="button" class="btn btn-outline-light">
+          입력
+        </button>
+        <button
+          id="reviseBtn"
+          type="button"
+          class="btn btn-outline-light"
+          style="display: none"
+        >
+          수정완료
+        </button>
+      </div>
+      <!-- Inner HTML -->
+      <div class="createForm" style="font-weight: bold; color: white"></div>
     </div>
-</footer>
-
+  </footer>
 </html>

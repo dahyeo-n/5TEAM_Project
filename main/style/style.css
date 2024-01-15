@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 
 * {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
@@ -24,7 +24,7 @@ h2 {
   align-items: center;
 }
 
-h2>i {
+h2 > i {
   transform: translateY(-2.6px);
 }
 
@@ -81,7 +81,7 @@ body {
   display: none;
 }
 
-.gotop>i {
+.gotop > i {
   position: fixed;
   right: 50px;
   bottom: 15px;
@@ -89,7 +89,7 @@ body {
   cursor: pointer;
 }
 
-.gotop>i:hover {
+.gotop > i:hover {
   color: rgba(40, 213, 236, 0.975);
 }
 
