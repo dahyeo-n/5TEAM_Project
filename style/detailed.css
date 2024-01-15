@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  text-decoration: none;
+}
+
+#review-txt {
+  width: 500px;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.reviewbtn {
+  display: flex;
+  justify-content: center;
+}
+
+#inputBtn {
+  margin-right: 5px;
+}
+
+#fixBtn {
+  margin-right: 3px;
+}
+
+.pw {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.pwBtn {
+  border-radius: 10px;
+}
+
+.reviewcontainor {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* header 정렬 */
+.headerwrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerbox {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchbtninDetailed {
+  width: 380px;
+  display: flex;
+}
+
+.main {
+  color: white;
+  position: relative;
+}
+
+body {
+  width: 100%;
+  background-color: black;
+}
+
+.txc-textbox {
+  width: 800px;
+}
+
+.moviesText {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding-right: 80px;
+}
+
+#detailedInfobtn {
+  margin-right: 5px;
+}
+
+.reviewBox {
+  margin: 0px 0px;
+}
+
+.reviewBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
