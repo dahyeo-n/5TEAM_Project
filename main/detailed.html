@@ -62,24 +62,21 @@
         </div>
 
         <!-- 검색창 인풋-버튼 사이 간격 좁히고 싶음 -->
-        <div class="searchbtninDetailed">
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input
-              type="search"
-              class="form-control form-control-dark text-bg-dark"
-              placeholder="Movie name"
-              aria-label="Search"
-            />
-          </form>
-
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">
-              Search
-            </button>
+        <form id="search">
+          <div class="searchbtninDetailed">
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input id="input-form" type="search" class="form-control form-control-dark text-bg-dark"
+                placeholder="Movie name" aria-label="Search" />
+            </form>
+            <div class="text-end">
+              <button id="searchBtn" type="button" class="btn btn-outline-light me-2">
+                Search
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
-    </header>
+        </form>
+    </div>
+</header>
 
     <main id="moviedetail"></main>
 

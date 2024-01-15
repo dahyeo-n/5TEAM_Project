@@ -40,7 +40,7 @@ export const drawmovie = async () => {
 };
 
 //로컬스토리지 저장 함수
-function storegeAdd(keyword) {
+export function storegeAdd(keyword) {
   const data = localStorage.setItem('cast', keyword);
   return data;
 }
