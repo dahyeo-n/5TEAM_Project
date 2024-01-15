@@ -1,4 +1,5 @@
 //전역 변수
+const check = localStorage.getItem('cast'); //클릭한 페이지 ID값 변수명변경
 const inputBtn = document.querySelector('#inputBtn'); //입력 버튼
 const reviseBtn = document.querySelector('#reviseBtn'); //수정완료 버튼
 const createForm = document.querySelector('.createForm'); //리뷰 리스트들 부모
@@ -19,7 +20,7 @@ inputBtn.addEventListener('click', function (e) {
   let reviewVal = reviewForm.value;
   let starVal = starForm.value;
   let idVal = new Date().getTime(); //현재 시간으로 id 부여
-
+  let movieId = check;
   //클릭시 array에 데이터 푸쉬
   inputArray.push({
     id: idVal,
@@ -27,6 +28,7 @@ inputBtn.addEventListener('click', function (e) {
     pw: pwVal,
     reviewInput: reviewVal,
     starCnt: starVal,
+    movieId: movieId,
   });
   let inputArrayString = JSON.stringify(inputArray); //push한 데이터 문자열로 전환
   window.localStorage.setItem('data', inputArrayString); // 전환된 데이터 로컬에 저장
@@ -91,8 +93,11 @@ inputBtn.addEventListener('click', function (e) {
 
 //기존데이터 읽기 및 표시
 function drawing() {
-  for (let i = 0; i < inputArray.length; i++) {
-    let item = inputArray[i];
+  let reviews = inputArray.filter((review) => {
+    return review.movieId === check;
+  });
+  for (let i = 0; i < reviews.length; i++) {
+    let item = reviews[i];
 
     let temp = `<div ${item.id} class="valueBox" >
       <p>이름:${item.name} 리뷰:${item.reviewInput}  별점:${item.starCnt}

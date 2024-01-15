@@ -3,7 +3,7 @@ export const drawmovie = async () => {
   const movieList = await fetchmovieList();
   console.log(movieList);
 
-  const cardList = document.querySelector("#main-card");
+  const cardList = document.querySelector('#main-card');
   cardList.innerHTML = movieList
     .map(
       (movie) => `
@@ -20,15 +20,15 @@ export const drawmovie = async () => {
   </a> 
 </div>`
     )
-    .join("");
+    .join('');
 
   // 카드 클릭시 페이지 넘어가고 영화 아이디 저장
-  cardList.addEventListener("click", clickCard);
+  cardList.addEventListener('click', clickCard);
 
   function clickCard(event) {
     if (event.traget === cardList) return;
 
-    if (event.target.matches(".image")) {
+    if (event.target.matches('.image')) {
       const id = event.target.id;
       storegeAdd(id);
     }
@@ -37,7 +37,7 @@ export const drawmovie = async () => {
 
 //로컬스토리지 저장 함수
 function storegeAdd(keyword) {
-  const data = localStorage.setItem("cast", keyword);
+  const data = localStorage.setItem('cast', keyword);
   return data;
 }
 
@@ -46,18 +46,17 @@ export const drawMovieDetails = async (id) => {
   const detailsList = await fetchMovieDetails(id);
   const detailedCast = await fetchmovieCast(id);
 
-  const cardDetailList = document.querySelector("#moviedetail");
-  const moviedetailCast = document.querySelector("#moviedetailCast");
+  const cardDetailList = document.querySelector('#moviedetail');
+  const moviedetailCast = document.querySelector('#moviedetailCast');
 
   let backdrop = detailsList.backdrop_path;
   let title = detailsList.title;
   let overview = detailsList.overview;
   let average = detailsList.vote_average;
-  let genres = detailsList.genres.map((e) => e.name).join(", ");
+  let genres = detailsList.genres.map((e) => e.name).join(', ');
   let release = detailsList.release_date;
-  let character = detailedCast.map((e) => e.character).join("역, ");
-  let caster = detailedCast.map((e) => e.original_name).join(", ");
-
+  let character = detailedCast.map((e) => e.character).join('역, ');
+  let caster = detailedCast.map((e) => e.original_name).join(', ');
 
   let tempHtml = `<div class="main" img
   style="
@@ -73,7 +72,7 @@ export const drawMovieDetails = async (id) => {
       <button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
   </div>
 </div>`;
-  cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
+  cardDetailList.insertAdjacentHTML('afterbegin', tempHtml);
 
   let tempCastHtml = `<div
 style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 200px 5px 280px; padding: 10px 50px 10px 50px;">
@@ -139,23 +138,23 @@ style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(
     </div>
 </div>
 </div>`;
-  moviedetailCast.insertAdjacentHTML("beforeend", tempCastHtml);
+  moviedetailCast.insertAdjacentHTML('beforeend', tempCastHtml);
 };
 
 // API MOVIE 데이터 함수
 async function fetchmovieList() {
   const options = {
-    method: "GET",
+    method: 'GET',
     headers: {
-      accept: "application/json",
+      accept: 'application/json',
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00",
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00',
     },
   };
 
   try {
     const response = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KO&page=1&sort_by=popularity.desc",
+      'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KO&page=1&sort_by=popularity.desc',
       options
     );
     const data = await response.json();
@@ -168,11 +167,11 @@ async function fetchmovieList() {
 // API CAST 데이터 함수
 async function fetchmovieCast(id) {
   const options = {
-    method: "GET",
+    method: 'GET',
     headers: {
-      accept: "application/json",
+      accept: 'application/json',
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00",
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00',
     },
   };
   try {
@@ -189,11 +188,11 @@ async function fetchmovieCast(id) {
 
 async function fetchMovieDetails(id) {
   const options = {
-    method: "GET",
+    method: 'GET',
     headers: {
-      accept: "application/json",
+      accept: 'application/json',
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00",
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00',
     },
   };
 

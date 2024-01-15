@@ -46,20 +46,6 @@ button.input-form-btn {
   border-radius: 2px;
 }
 
-/* 데이터 CSS 영역 토글다시 추가시 display none해주기 */
-.toggleVal {
-  display: none;
-  margin-top: 20px;
-}
-
-.toggleBtn {
-  display: flex;
-  justify-content: center;
-}
-.toggleBtn > button {
-  margin-top: 10px;
-}
-
 p {
   text-align: center;
   margin-top: 10px;
