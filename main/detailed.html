@@ -10,7 +10,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/detailed.css" />
-    <link rel="stylesheet" href="/data/data.css" />
     <script type="module" src="./src/detailed.js"></script>
     <script type="module" src="./src/data.js"></script>
 </head>
@@ -39,23 +38,23 @@
             </div>
 
             <!-- 검색창 인풋-버튼 사이 간격 좁히고 싶음 -->
-            <div class="searchbtninDetailed">
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Movie name"
-                        aria-label="Search" />
-                </form>
-
-                <div class="text-end">
-                    <button type="button" class="btn btn-outline-light me-2">
-                        Search
-                    </button>
+            <form id="search">
+                <div class="searchbtninDetailed">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input id="input-form" type="search" class="form-control form-control-dark text-bg-dark"
+                            placeholder="Movie name" aria-label="Search" />
+                    </form>
+                    <div class="text-end">
+                        <button id="searchBtn" type="button" class="btn btn-outline-light me-2">
+                            Search
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </header>
 
-    <main id="moviedetail">
-    </main>
+    <main id="moviedetail"></main>
 
     <!-- (장르, 평점 등)각 요소에 영화 정보 연결 -->
     <section id="moviedetailCast"></section>
@@ -91,14 +90,13 @@
             </select>
             <label for="floatingSelect">⭐</label>
         </div>
-        <div class="reviewbtn">
-            <button id="inputBtn" type="button" class="btn btn-outline-light">
-                입력
-            </button>
-            <button id="reviseBtn" type="button" class="btn btn-outline-light">
-                수정완료
-            </button>
-        </div>
+        <button id="inputBtn" type="button" class="btn btn-outline-dark">
+            입력
+        </button>
+        <button id="reviseBtn" type="button" class="btn btn-outline-dark">
+            수정완료
+        </button>
+
         <!-- Inner HTML -->
         <div class="createForm"></div>
     </div>

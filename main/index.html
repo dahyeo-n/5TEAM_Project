@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최고의 영화</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>최고의 영화</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./style/reset.css" />
-  <link rel="stylesheet" href="./style/style.css" />
-  <script type="module" src="./src/main.js"></script>
-</head>
-
-<body>
-  <!-- 헤더 영역 -->
-  <div class="header">
-    <div class="title">
-      <a href="./index.html">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <a href="#" class="nav-link px-2 text-danger" onClick="window.location.reload()"
-            style="font-size: 45px; font-weight: bolder;"><b>FIVEFLIX</b></a>
-        </ul>
+  <body>
+    <!-- 헤더 영역 -->
+    <div class="header">
+      <div class="title">
+        <a href="./index.html">
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <a
+              href="#"
+              class="nav-link px-2 text-danger"
+              onClick="window.location.reload()"
+              style="font-size: 45px; font-weight: bolder"
+              ><b>FIVEFLIX</b></a
+            >
+          </ul>
+        </a>
+      </div>
     </div>
-  </div>
-  <!-- &nbsp;공백 -->
-  </a>
-  </div>
-  </div>
-  <!-- 검색 영역 -->
-  <div class="search">
-    <form class="movie-search-inner">
-      <input type="search" id="input-form" class="form-control form-control-dark text-bg-dark" placeholder="Movie name"
-        aria-label="Search">
-    </form>
-    <button id="searchbtn" type="submit" class="btn btn-outline-light me-2">Search</button>
-  </div>
-  <!-- 상세 페이지 영역 (자바스크립트 연결시켜야 함) -->
-  <a href="./detailed.html">
-  </a>
-  <!-- 메인 카드 영역 -->
-  <div class="container" id="container">
-    <div id="main-card" class="row row-cols-1 row-cols-md-3 g-4"></div>
-    <p class="searchNone">검색 내용이 없음</p>
-  </div>
-  <div class="gotop">
-    <i class="bi bi-arrow-up-circle"></i>
-  </div>
-</body>
 
+    <!-- 검색 영역 -->
+    <div class="search">
+      <form class="movie-search-inner">
+        <input
+          type="search"
+          id="input-form"
+          class="form-control form-control-dark text-bg-dark"
+          placeholder="Movie name"
+          aria-label="Search"
+        />
+      </form>
+      <button id="searchbtn" type="submit" class="btn btn-outline-light me-2">
+        Search
+      </button>
+    </div>
+    <!-- 상세 페이지 영역 (자바스크립트 연결시켜야 함) -->
+    <a href="./detailed.html"> </a>
+    <!-- 메인 카드 영역 -->
+    <div class="container" id="container">
+      <div id="main-card" class="row row-cols-1 row-cols-md-3 g-4"></div>
+      <p class="searchNone">검색 내용이 없음</p>
+    </div>
+    <div class="gotop">
+      <i class="bi bi-arrow-up-circle"></i>
+    </div>
+  </body>
 </html>
