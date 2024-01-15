@@ -13,17 +13,17 @@ export const drawmovie = async () => {
     cardList.innerHTML = movieList
         .map(
             (movie) => `
-      <div id="col" class="col" >
-      <a href = "#">
-      <div id="cardId" class="card h-100" onclick="location.href='detailed.html'">
-  <img id="${movie.id}" class="image" src="https://image.tmdb.org/t/p/original${movie.poster_path}"> 
-  <div class="card-body">
-  <h5 class="card-title">${movie.title}</h5>
-  <p class="card-text" >${movie.overview}</p>
-  <p class="card-average" >${movie.vote_average}</p>
-</div>
-  </div>
-  </a> 
+    <div id="col" class="col" >
+    <a href = "#">
+    <div id="cardId" class="card h-100" onclick="location.href='detailed.html'">
+    <img id="${movie.id}" class="image" src="https://image.tmdb.org/t/p/original${movie.poster_path}"> 
+    <div class="card-body">
+    <h5 class="card-title"><b>${movie.title}</b></h5>
+    <p class="card-text" >${movie.overview}</p>
+    <p class="card-average" >[평점] ${movie.vote_average}</p>
+    </div>
+    </div>
+    </a> 
 </div>`
         )
         .join("");
@@ -71,7 +71,7 @@ export const drawMovieDetails = async (id) => {
   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
           <!-- 영화 제목 -->
-          <h1 class="display-5 fw-bold"> 영화 제목:${title}</h1>
+          <h1 class="display-5 fw-bold">${title}</h1>
           <!-- 영화 요약 내용 -->
           <p class="col-md-8 fs-4">${overview}</p>
       </div>
@@ -80,23 +80,23 @@ export const drawMovieDetails = async (id) => {
   </div>
 </div>`;
 
-  cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
-  // Scroll adjustment function
-  // 1. 상세정보 scroll adjustment
-  const detailedBtn = document.querySelector("#detailedInfobtn");
-  detailedBtn.addEventListener("click", function () {
-    console.log(detailedBtn);
-    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
-    window.scrollTo({ left: 0, top: 500 });
-    // console.log(window.scrollTo);
-  });
+    cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
+    // Scroll adjustment function
+    // 1. 상세정보 scroll adjustment
+    const detailedBtn = document.querySelector("#detailedInfobtn");
+    detailedBtn.addEventListener("click", function () {
+        console.log(detailedBtn);
+        // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+        window.scrollTo({ left: 0, top: 500 });
+        // console.log(window.scrollTo);
+    });
 
-  // 2. 리뷰 scroll adjustment
-  const rewiewbtn = document.querySelector('#rewiewbtn');
-  rewiewbtn.addEventListener('click', function () {
-    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
-    window.scrollTo({ left: 0, top: 800 });
-  });
+    // 2. 리뷰 scroll adjustment
+    const rewiewbtn = document.querySelector('#rewiewbtn');
+    rewiewbtn.addEventListener('click', function () {
+        // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+        window.scrollTo({ left: 0, top: 800 });
+    });
 
     let tempCastHtml = `<div
 style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 200px 5px 280px; padding: 10px 50px 10px 50px;">
