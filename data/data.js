@@ -22,11 +22,32 @@ let inputArray = inputArrayVal || []; // 가져온 로컬에 push하기 , 비어
 
 inputBtn.addEventListener('click', function (e) {
   e.preventDefault();
-  let nameinput = document.querySelector('#floatingInput').value;
+  let nameinput = document.querySelector('#floatingInput').value; 
   let pwinput = document.querySelector('#floatingPassword').value;
   let review = document.querySelector('.review').value;
   let star = document.querySelector('.starCnt').value;
   let idVal = new Date().getTime(); //현재 시간으로 id 부여
+
+  // 유효성 검사
+  if (nameinput==="") {
+  return alert("이름을 입력해주세요.")
+  } 
+  if (pwinput==="") {
+  return  alert("비밀번호를 입력해주세요.")
+  }
+  if (review==="") {
+  return  alert("리뷰를 입력해주세요.")
+  }
+// 비밀번호 숫자 4자리 입력
+  if (!/^\d+$/.test(pwinput)) {
+    alert("비밀번호는 숫자만 입력해주세요");
+    return;
+  }
+  if (pwinput.length !== 4) {
+    alert("비밀번호는 4자리로 입력해주세요");
+    return;
+  }
+
   //클릭시 array에 데이터 푸쉬
   inputArray.push({
     id: idVal,
@@ -69,6 +90,7 @@ delBtn.forEach((deleteVal, index) => {
     let numIds = parseInt(stringIds);
     inputArrayVal = inputArrayVal.filter((item) => item.id !== numIds);
     console.log(inputArrayVal); //다시 봐야함
+    let pwinput = prompt("비밀번호를 입력해주세요.");
   });
 });
 
