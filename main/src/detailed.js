@@ -16,7 +16,8 @@ function homePage() {
 // Scroll adjustment function
 // 1. 상세정보 scroll adjustment
 
-const detailedBtn = document.querySelector("#detailedInfobtn");
+const detailedBtn = document.querySelector(".detailedInfobtn");
+console.log(detailedBtn);
 detailedBtn.addEventListener("click", function () {
     // left: 가로축(x좌표), top: 세로축(y좌표) 지정
     window.scrollTo({ left: 0, top: 500 });

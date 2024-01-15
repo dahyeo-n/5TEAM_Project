@@ -19,7 +19,7 @@ export const drawmovie = async () => {
       <div id="cardId" class="card h-100" onclick="location.href='detailed.html'">
   <img id="${movie.id}" class="image" src="https://image.tmdb.org/t/p/original${movie.poster_path}"> 
   <div class="card-body">
-  <h5 class="card-title" >${movie.title}</h5>
+  <h5 class="card-title">${movie.title}</h5>
   <p class="card-text" >${movie.overview}</p>
   <p class="card-average" >${movie.vote_average}</p>
 </div>
@@ -72,7 +72,7 @@ export const drawMovieDetails = async (id) => {
   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
           <!-- 영화 제목 -->
-          <h1 class="display-5 fw-bold">${title}</h1>
+          <h1 class="display-5 fw-bold"> 영화 제목:${title}</h1>
           <!-- 영화 요약 내용 -->
           <p class="col-md-8 fs-4">${overview}</p>
       </div>
