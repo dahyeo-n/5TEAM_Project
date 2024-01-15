@@ -1,4 +1,6 @@
-import {drawmovie} from "./movieApi.js";
+
+
+import {drawmovie} from "./movieDraw.js";
 import {searchMovie} from "./search.js";
 
 drawmovie();
