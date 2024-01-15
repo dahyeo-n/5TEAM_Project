@@ -1,17 +1,3 @@
-// 토글기능 구현
-const toggle = document.querySelector('#toggle');
-const toggleVal = document.querySelector('.toggleVal');
-let toggleRepeat = true; //디폴트 값 설정.
-toggle.addEventListener('click', function () {
-  if (toggleRepeat === true) {
-    toggleVal.style.display = 'block';
-    toggleRepeat = false;
-  } else {
-    toggleVal.style.display = 'none';
-    toggleRepeat = true;
-  }
-});
-
 //전역 변수
 const inputBtn = document.querySelector('#inputBtn'); //입력 버튼
 const reviseBtn = document.querySelector('#reviseBtn'); //수정완료 버튼
