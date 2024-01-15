@@ -71,7 +71,7 @@ export const drawMovieDetails = async (id) => {
   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
           <!-- 영화 제목 -->
-          <h1 class="display-5 fw-bold"> 영화 제목:${title}</h1>
+          <h1 class="display-5 fw-bold">${title}</h1>
           <!-- 영화 요약 내용 -->
           <p class="col-md-8 fs-4">${overview}</p>
       </div>
