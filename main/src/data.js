@@ -12,9 +12,49 @@ let pwForm = document.querySelector('#floatingPassword');
 let reviewForm = document.querySelector('.review');
 let starForm = document.querySelector('.starCnt');
 
+//validation
+function validation() {
+  if (nameForm.value === '') {
+    alert('이름을 입력하세요');
+    return false;
+  }
+  if (pwForm.value === '') {
+    alert('비밀번호를 입력하세요');
+    return false;
+  }
+  if (reviewForm.value === '') {
+    alert('리뷰내용을 입력하세요');
+    return false;
+  }
+  if (starForm.value === '') {
+    alert('별점을 입력하세요');
+    return false;
+  }
+}
+//기존데이터 드로잉
+function drawing() {
+  let reviews = inputArray.filter((review) => {
+    return review.movieId === check;
+  });
+  for (let i = 0; i < reviews.length; i++) {
+    let item = reviews[i];
+
+    let temp = `<div ${item.id} class="valueBox" >
+      <p>이름:${item.name} 리뷰:${item.reviewInput}  별점:${item.starCnt}
+        <button type="button" data-id=${item.id} class="btn btn-dark">수정</button>
+        <button type="button" data-id=${item.id} class="btn btn-danger">삭제</button>
+        <p class="pw" style="display:none">비밀번호 입력:<input class="pwInput" form="password" type="password" />
+        <button class="pwBtn">확인</button></p>
+      </p>
+    </div>`;
+    createForm.insertAdjacentHTML('beforeend', temp);
+  }
+}
+
 //입력확인버튼
 inputBtn.addEventListener('click', function (e) {
   e.preventDefault();
+  validation();
   let nameVal = nameForm.value;
   let pwVal = pwForm.value;
   let reviewVal = reviewForm.value;
@@ -44,11 +84,6 @@ inputBtn.addEventListener('click', function (e) {
   </div>`;
   createForm.insertAdjacentHTML('beforeend', temp_html);
 
-  // 입력 폼 비우기
-  // nameForm.value = '';
-  // pwForm.value = '';
-  // reviewForm.value = '';
-  // starForm.value = '';
   window.location.reload();
 
   // 수정버튼
@@ -99,10 +134,10 @@ function drawing() {
     let item = reviews[i];
 
     let temp = `<div ${item.id} class="valueBox" >
-      <p class="reviewcontainor">[이름] ${item.name}  [리뷰] ${item.reviewInput}  [별점] ${item.starCnt}
-        <button id="fixBtn" type="button" data-id=${item.id} class="btn btn-warning">수정</button>
+      <p>이름:${item.name} 리뷰:${item.reviewInput}  별점:${item.starCnt}
+        <button type="button" data-id=${item.id} class="btn btn-dark">수정</button>
         <button type="button" data-id=${item.id} class="btn btn-danger">삭제</button>
-        <p class="pw" style="display:none">비밀번호 입력: <input class="pwInput" form="password" type="password" />
+        <p class="pw" style="display:none">비밀번호 입력:<input class="pwInput" form="password" type="password" />
         <button class="pwBtn">확인</button></p>
       </p>
     </div>`;
@@ -117,19 +152,19 @@ let pwHiddenFrom = document.querySelector('.pw');
 let pwSubmitBtn = document.querySelector('.pwBtn');
 
 delBtns.forEach((deleteBtn) => {
-  // 1.삭제버튼 클릭 , 벨리데이션
+  //삭제버튼 클릭 , 비밀번호 벨리데이션
   deleteBtn.addEventListener('click', function (e) {
     e.preventDefault();
     let deleteBtnId = parseInt(deleteBtn.dataset.id); //삭제 버튼의 ID값
 
     pwHiddenFrom.style.display = 'block';
     pwSubmitBtn.addEventListener('click', function () {
-      //3.비밀번호 인풋 확인버튼 클릭
+      //비밀번호 인풋 확인버튼 클릭
       let pwInput = document.querySelector('.pwInput');
       let pwInputVal = pwInput.value; //입력한 비밀번호
       let pwTargetId = inputArray.find((idVal) => idVal.id === deleteBtnId); //inputArray의 id값에서 찾기
       if (pwTargetId.pw === pwInputVal) {
-        inputArray = inputArray.filter((item) => item.id !== numIds); //기존ID랑 다른것들 item에 재할당
+        inputArray = inputArray.filter((item) => item.id !== deleteBtnId); //기존ID랑 다른것들 item에 재할당
         alert('삭제완료');
 
         e.target.parentElement.parentElement.remove();
@@ -144,45 +179,59 @@ delBtns.forEach((deleteBtn) => {
   });
 });
 
-//수정버튼
+//수정버튼 , 비번 밸리데이션
 let reviseBtns = document.querySelectorAll('.btn-dark');
 let hiddenId = document.querySelectorAll('.hiddenId');
 reviseBtns.forEach((reviseBtn) => {
   reviseBtn.addEventListener('click', function (e) {
     e.preventDefault();
+    let reviseIdString = reviseBtn.dataset.id;
+    let reviseBtnId = parseInt(reviseIdString); //클릭한 ID값
     pwHiddenFrom.style.display = 'block';
+
     pwSubmitBtn.addEventListener('click', function () {
       let pwInput = document.querySelector('.pwInput');
       let pwInputVal = pwInput.value; //입력한 비밀번호
-      console.log(pwInputVal);
+      let pwTargetId = inputArray.find(
+        (reviseVal) => reviseVal.id === reviseBtnId
+      ); //inputArray의 id값이 같은 객체 찾기
+
+      if (pwInputVal === pwTargetId.pw) {
+        inputBtn.style.display = 'none';
+        hiddenReviseBtn.style.display = 'block';
+
+        let targetReviewInput = inputArray.find(
+          (item) => item.id === reviseBtnId
+        ); //클릭한 버튼의 정보들
+        // console.log(targetReviewInput);
+
+        // 클릭한 데이터들 저장 (객체분해 할당으로 리팩토링)
+        let targetName = targetReviewInput.name;
+        let targetPw = targetReviewInput.pw;
+        let targetReview = targetReviewInput.reviewInput;
+        let targetStar = targetReviewInput.starCnt;
+        let targetId = reviseBtnId;
+        // console.log(targetName, targetPw, targetReview, targetStar);
+
+        //비어있는 폼에다가 클릭한 데이터들 표시
+        nameForm.value = targetName;
+        pwForm.value = targetPw;
+        reviewForm.value = targetReview;
+        starForm.value = targetStar;
+        hiddenId.value = targetId;
+
+        pwInput.value = '';
+      } else {
+        alert('비밀번호를 똑바로 확인 하세요');
+        window.location.reload();
+      }
     });
-    inputBtn.style.display = 'none';
-    hiddenReviseBtn.style.display = 'block';
-    let reviseIdString = reviseBtn.dataset.id;
-    let reviseBtnId = parseInt(reviseIdString); //클릭한 ID값
-
-    let targetReviewInput = inputArray.find((item) => item.id === reviseBtnId); //클릭한 버튼의 정보들
-    // console.log(targetReviewInput);
-
-    // 클릭한 데이터들 저장 (객체분해 할당으로 리팩토링)
-    let targetName = targetReviewInput.name;
-    let targetPw = targetReviewInput.pw;
-    let targetReview = targetReviewInput.reviewInput;
-    let targetStar = targetReviewInput.starCnt;
-    let targetId = reviseBtnId;
-    // console.log(targetName, targetPw, targetReview, targetStar);
-
-    //비어있는 폼에다가 클릭한 데이터들 표시
-    nameForm.value = targetName;
-    pwForm.value = targetPw;
-    reviewForm.value = targetReview;
-    starForm.value = targetStar;
-    hiddenId.value = targetId;
   });
 });
 
 //수정완료버튼
-reviseBtn.addEventListener('click', function () {
+hiddenReviseBtn.addEventListener('click', function () {
+  validation();
   let reviseName = nameForm.value;
   let revisePw = pwForm.value;
   let reviseReview = reviewForm.value;
@@ -201,9 +250,10 @@ reviseBtn.addEventListener('click', function () {
     let inputArrayId = inputArray[i].id; //기존데이터들 ID
     if (inputArrayId === idVal) {
       updateLocalStorage();
-      window.location.reload();
     }
   }
+  alert('수정완료');
+  window.location.reload();
 });
 
 //로컬업데이트
