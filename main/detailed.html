@@ -13,7 +13,6 @@
     />
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/detailed.css" />
-    <link rel="stylesheet" href="/data/data.css" />
     <script type="module" src="./src/detailed.js"></script>
     <script type="module" src="./src/data.js"></script>
   </head>
@@ -126,15 +125,25 @@
         </select>
         <label for="floatingSelect">⭐</label>
       </div>
-      <button id="inputBtn" type="button" class="btn btn-outline-dark">
+      <button
+        id="inputBtn"
+        type="button"
+        class="btn btn-outline-dark"
+        style="display: block"
+      >
         입력
       </button>
-      <button id="reviseBtn" type="button" class="btn btn-outline-dark">
+      <button
+        id="reviseBtn"
+        type="button"
+        class="btn btn-outline-dark"
+        style="display: none"
+      >
         수정완료
       </button>
-
-      <!-- Inner HTML -->
-      <div class="createForm"></div>
     </div>
+
+    <!-- Inner HTML -->
+    <div class="createForm"></div>
   </footer>
 </html>
