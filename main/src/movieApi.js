@@ -69,12 +69,14 @@ export const drawMovieDetails = async (id) => {
           <!-- 영화 요약 내용 -->
           <p class="col-md-8 fs-4">${overview}</p>
       </div>
+      <button id="detailedInfobtn" type="button" class="btn btn-outline-light">상세정보</button>
+      <button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
   </div>
 </div>`;
-cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
+  cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
 
-let tempCastHtml = `<div
-style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 300px 5px 300px; padding: 10px 50px 10px 50px;">
+  let tempCastHtml = `<div
+style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 200px 5px 280px; padding: 10px 50px 10px 50px;">
 
 <div class="moviesText">
     <div>
@@ -137,7 +139,7 @@ style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(
     </div>
 </div>
 </div>`;
-moviedetailCast.insertAdjacentHTML("beforeend", tempCastHtml);
+  moviedetailCast.insertAdjacentHTML("beforeend", tempCastHtml);
 };
 
 // API MOVIE 데이터 함수

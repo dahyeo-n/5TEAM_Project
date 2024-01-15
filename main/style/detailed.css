@@ -10,11 +10,7 @@
     justify-content: space-between;
 }
 
-.blank {
-    width: 400px;
-}
-
-.container {
+.headerbox {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -32,12 +28,12 @@
 }
 
 body {
-    width: 95%;
+    width: 100%;
     background-color: black;
 }
 
 .txc-textbox {
-    width: 650px;
+    width: 800px;
 }
 
 .moviesText {

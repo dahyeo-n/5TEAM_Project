@@ -1,12 +1,12 @@
 import {drawmovie} from "./movieApi.js";
-import {serchMovie} from "./serch.js";
+import {searchMovie} from "./search.js";
 
 drawmovie();
 
 let inputformbtn = document.querySelector('.movie-search-inner');
 inputformbtn.addEventListener('submit', (event) => {
     event.preventDefault();
-    serchMovie();
+    searchMovie();
 });
 
 
