@@ -6,21 +6,31 @@
   text-decoration: none;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+#review-txt {
+  width: 500px;
+  flex-direction: column;
+  margin: 0px 500px 10px 500px;
+}
+
+.reviewbtn {
+  margin: 0px 680px 0px 680px;
 }
 
 #inputBtn {
-  width: 150px;
-  margin-top: 10px;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
-p {
+#fixBtn {
+  margin-right: 3px;
+}
+
+.pw {
+  margin: 0px 550px 0px 550px;
+}
+
+.reviewcontainor {
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 1rem;
 }
 
 /* header 정렬 */
@@ -63,16 +73,4 @@ body {
 
 #detailedInfobtn {
   margin-right: 5px;
-}
-
-/* 리뷰영역 CSS */
-.toggleVal {
-  display: flex;
-}
-.toggleVal > .form-floating {
-  justify-content: space-between;
-}
-
-p > .pw {
-  display: none;
 }

@@ -1,5 +1,5 @@
-import {fetchmovieList} from "./api.js";
-import {storegeAdd} from "./movieDraw.js";
+import { fetchmovieList } from "./api.js";
+import { storegeAdd } from "./movieDraw.js";
 
 export const searchMovie = () => {
   const inputform = document.querySelector('#input-form').value.replace(/\s/g, '');

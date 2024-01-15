@@ -35,8 +35,8 @@ inputBtn.addEventListener('click', function (e) {
 
   // html 추가
   let temp_html = `<div data-id=${idVal} class="valueBox" >
-    <p>이름:${nameVal} 리뷰:${reviewVal}  별점:${starVal} 
-      <button type="button" data-id=${idVal} class="btn btn-dark">수정</button>
+    <p>[이름] ${nameVal}  [리뷰] ${reviewVal}  [별점] ${starVal} 
+      <button type="button" data-id=${idVal} class="btn btn-warning">수정</button>
       <button type="button" data-id=${idVal} class="btn btn-danger">삭제</button>
       <p class ="pw">비밀번호 입력:<input class="blockPwForm" form="password" type="password" />
       <button class="pwBtn">확인</button></p>
@@ -99,10 +99,10 @@ function drawing() {
     let item = reviews[i];
 
     let temp = `<div ${item.id} class="valueBox" >
-      <p>이름:${item.name} 리뷰:${item.reviewInput}  별점:${item.starCnt}
-        <button type="button" data-id=${item.id} class="btn btn-dark">수정</button>
+      <p class="reviewcontainor">[이름] ${item.name}  [리뷰] ${item.reviewInput}  [별점] ${item.starCnt}
+        <button id="fixBtn" type="button" data-id=${item.id} class="btn btn-warning">수정</button>
         <button type="button" data-id=${item.id} class="btn btn-danger">삭제</button>
-        <p class="pw" style="display:none">비밀번호 입력:<input class="pwInput" form="password" type="password" />
+        <p class="pw" style="display:none">비밀번호 입력: <input class="pwInput" form="password" type="password" />
         <button class="pwBtn">확인</button></p>
       </p>
     </div>`;
