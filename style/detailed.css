@@ -53,6 +53,10 @@
   align-items: center;
 }
 
+#searchBtn {
+  margin-left: 7px;
+}
+
 .searchbtninDetailed {
   width: 380px;
   display: flex;
