@@ -8,7 +8,6 @@ import { fetchMovieVideo } from "./api.js";
 // movie 카드 함수
 export const drawmovie = async () => {
     const movieList = await fetchmovieList();
-    console.log(movieList);
 
     const cardList = document.querySelector("#main-card");
     cardList.innerHTML = movieList
@@ -80,7 +79,24 @@ export const drawMovieDetails = async (id) => {
       <button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
   </div>
 </div>`;
-    cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
+
+  cardDetailList.insertAdjacentHTML("afterbegin", tempHtml);
+  // Scroll adjustment function
+  // 1. 상세정보 scroll adjustment
+  const detailedBtn = document.querySelector("#detailedInfobtn");
+  detailedBtn.addEventListener("click", function () {
+    console.log(detailedBtn);
+    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+    window.scrollTo({ left: 0, top: 500 });
+    // console.log(window.scrollTo);
+  });
+
+  // 2. 리뷰 scroll adjustment
+  const rewiewbtn = document.querySelector('#rewiewbtn');
+  rewiewbtn.addEventListener('click', function () {
+    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+    window.scrollTo({ left: 0, top: 800 });
+  });
 
     let tempCastHtml = `<div
 style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 200px 5px 280px; padding: 10px 50px 10px 50px;">
@@ -151,7 +167,6 @@ style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(
 
 export const movieVideo = async (id) => {
     const movieVideo = await fetchMovieVideo(id);
-    console.log(movieVideo);
     let key = '';
     let check = "Trailer"
     for (let i = 0; i < movieVideo.length; i++) {
