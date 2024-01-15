@@ -40,10 +40,10 @@ function drawing() {
     let item = reviews[i];
 
     let temp = `<div ${item.id} class="valueBox" >
-      <p>이름:${item.name} 리뷰:${item.reviewInput}  별점:${item.starCnt}
-        <button type="button" data-id=${item.id} class="btn btn-dark">수정</button>
+      <p class="reviewcontainor">[이름] ${item.name}  [리뷰] ${item.reviewInput}  [별점] ${item.starCnt}
+        <button id="fixBtn" type="button" data-id=${item.id} class="btn btn-warning">수정</button>
         <button type="button" data-id=${item.id} class="btn btn-danger">삭제</button>
-        <p class="pw" style="display:none">비밀번호 입력:<input class="pwInput" form="password" type="password" />
+        <p class="pw" style="display:none">비밀번호 입력: <input class="pwInput" form="password" type="password" />
         <button class="pwBtn">확인</button></p>
       </p>
     </div>`;
@@ -75,10 +75,10 @@ inputBtn.addEventListener('click', function (e) {
 
   // html 추가
   let temp_html = `<div data-id=${idVal} class="valueBox" >
-    <p>이름:${nameVal} 리뷰:${reviewVal}  별점:${starVal} 
-      <button type="button" data-id=${idVal} class="btn btn-dark">수정</button>
+    <p class="reviewcontainor">[이름] ${nameVal}  [리뷰] ${reviewVal}  [별점] ${starVal} 
+      <button type="button" data-id=${idVal} class="btn btn-warning">수정</button>
       <button type="button" data-id=${idVal} class="btn btn-danger">삭제</button>
-      <p class ="pw">비밀번호 입력:<input class="blockPwForm" form="password" type="password" />
+      <p class ="pw">비밀번호 입력: <input class="blockPwForm" form="password" type="password" />
       <button class="pwBtn">확인</button></p>
     </p>
   </div>`;
@@ -89,13 +89,13 @@ inputBtn.addEventListener('click', function (e) {
 
 drawing();
 
-//삭제버튼  입력시 삭제버튼에도 이벤트 걸어 줘야 함 (나중에 함수화 해서 리팩토링)
+//삭제버튼 입력 시 삭제버튼에도 이벤트 걸어 줘야 함 (나중에 함수화 해서 리팩토링)
 let delBtns = document.querySelectorAll('.btn-danger');
 let pwHiddenFrom = document.querySelector('.pw');
 let pwSubmitBtn = document.querySelector('.pwBtn');
 
 delBtns.forEach((deleteBtn) => {
-  //삭제버튼 클릭 , 비밀번호 벨리데이션
+  //삭제버튼 클릭, 비밀번호 벨리데이션
   deleteBtn.addEventListener('click', function (e) {
     e.preventDefault();
     let deleteBtnId = parseInt(deleteBtn.dataset.id); //삭제 버튼의 ID값
@@ -104,18 +104,18 @@ delBtns.forEach((deleteBtn) => {
     pwSubmitBtn.addEventListener('click', function () {
       //비밀번호 인풋 확인버튼 클릭
       let pwInput = document.querySelector('.pwInput');
-      let pwInputVal = pwInput.value; //입력한 비밀번호
+      let pwInputVal = pwInput.value; // 입력한 비밀번호
       let pwTargetId = inputArray.find((idVal) => idVal.id === deleteBtnId); //inputArray의 id값에서 찾기
       if (pwTargetId.pw === pwInputVal) {
         inputArray = inputArray.filter((item) => item.id !== deleteBtnId); //기존ID랑 다른것들 item에 재할당
-        alert('삭제완료');
+        alert('삭제 완료');
 
         e.target.parentElement.parentElement.remove();
 
         updateLocalStorage();
         window.location.reload();
       } else {
-        alert('비밀번호를 똑바로 확인 하세요');
+        alert('비밀번호를 다시 한번 확인하세요');
         window.location.reload();
       }
     });
@@ -123,7 +123,7 @@ delBtns.forEach((deleteBtn) => {
 });
 
 //수정버튼 , 비번 밸리데이션
-let reviseBtns = document.querySelectorAll('.btn-dark');
+let reviseBtns = document.querySelectorAll('.btn-warning');
 let hiddenId = document.querySelectorAll('.hiddenId');
 reviseBtns.forEach((reviseBtn) => {
   reviseBtn.addEventListener('click', function (e) {
@@ -165,7 +165,7 @@ reviseBtns.forEach((reviseBtn) => {
 
         pwInput.value = '';
       } else {
-        alert('비밀번호를 똑바로 확인 하세요');
+        alert('비밀번호를 다시 한번 확인하세요');
         window.location.reload();
       }
     });
@@ -190,12 +190,12 @@ hiddenReviseBtn.addEventListener('click', function () {
   reviseTarget.starCnt = reviseStar;
 
   for (let i = 0; i < inputArray.length; i++) {
-    let inputArrayId = inputArray[i].id; //기존데이터들 ID
+    let inputArrayId = inputArray[i].id; //기존 데이터들 ID
     if (inputArrayId === idVal) {
       updateLocalStorage();
     }
   }
-  alert('수정완료');
+  alert('수정 완료');
   window.location.reload();
 });
 

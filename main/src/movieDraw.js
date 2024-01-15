@@ -5,12 +5,12 @@ import { fetchMovieVideo } from './api.js';
 
 // movie 카드 함수
 export const drawmovie = async () => {
-  const movieList = await fetchmovieList();
+    const movieList = await fetchmovieList();
 
-  const cardList = document.querySelector('#main-card');
-  cardList.innerHTML = movieList
-    .map(
-      (movie) => `
+    const cardList = document.querySelector('#main-card');
+    cardList.innerHTML = movieList
+        .map(
+            (movie) => `
     <div id="col" class="col" >
     <a href = "#">
     <div id="cardId" class="card h-100" onclick="location.href='detailed.html'">
@@ -23,79 +23,78 @@ export const drawmovie = async () => {
     </div>
     </a> 
 </div>`
-    )
-    .join('');
+        )
+        .join('');
 
-  // 카드 클릭시 페이지 넘어가고 영화 아이디 저장
-  cardList.addEventListener('click', clickCard);
+    // 카드 클릭시 페이지 넘어가고 영화 아이디 저장
+    cardList.addEventListener('click', clickCard);
 
-  function clickCard(event) {
-    if (event.traget === cardList) return;
+    function clickCard(event) {
+        if (event.traget === cardList) return;
 
-    if (event.target.matches('.image')) {
-      const id = event.target.id;
-      storegeAdd(id);
+        if (event.target.matches('.image')) {
+            const id = event.target.id;
+            storegeAdd(id);
+        }
     }
-  }
 };
 
 //로컬스토리지 저장 함수
 export function storegeAdd(keyword) {
-  const data = localStorage.setItem('cast', keyword);
-  return data;
+    const data = localStorage.setItem('cast', keyword);
+    return data;
 }
 
 // id로 영화 검색후 배우 데이터 가져오기 및 카드 추가
 export const drawMovieDetails = async (id) => {
-  const detailsList = await fetchMovieDetails(id);
-  const detailedCast = await fetchmovieCast(id);
+    const detailsList = await fetchMovieDetails(id);
+    const detailedCast = await fetchmovieCast(id);
 
-  const cardDetailList = document.querySelector('#moviedetail');
-  const moviedetailCast = document.querySelector('#moviedetailCast');
+    const cardDetailList = document.querySelector('#moviedetail');
+    const moviedetailCast = document.querySelector('#moviedetailCast');
 
-  let backdrop = detailsList.backdrop_path;
-  let title = detailsList.title;
-  let overview = detailsList.overview;
-  let average = detailsList.vote_average;
-  let genres = detailsList.genres.map((e) => e.name).join(', ');
-  let release = detailsList.release_date;
-  let character = detailedCast.map((e) => e.character).join('역, ');
-  let caster = detailedCast.map((e) => e.original_name).join(', ');
+    let backdrop = detailsList.backdrop_path;
+    let title = detailsList.title;
+    let overview = detailsList.overview;
+    let average = detailsList.vote_average;
+    let genres = detailsList.genres.map((e) => e.name).join(', ');
+    let release = detailsList.release_date;
+    let character = detailedCast.map((e) => e.character).join('역, ');
+    let caster = detailedCast.map((e) => e.original_name).join(', ');
 
-  let tempHtml = `<div class="main" img
-  style="
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.7) 95%, rgba(0, 0, 0, 1) 100%), url(https://image.tmdb.org/t/p/w500${backdrop}); background-size: cover; background-position: center; background-repeat: no-repeat;">
-  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-          <!-- 영화 제목 -->
-          <h1 class="display-5 fw-bold">${title}</h1>
-          <!-- 영화 요약 내용 -->
-          <p class="col-md-8 fs-4">${overview}</p>
-      </div>
-      <button id="detailedInfobtn" type="button" class="btn btn-outline-light">상세정보</button>
-      <button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
-  </div>
+    let tempHtml = `<div class="main" img
+style="
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.7) 95%, rgba(0, 0, 0, 1) 100%), url(https://image.tmdb.org/t/p/w500${backdrop}); background-size: cover; background-position: center; background-repeat: no-repeat;">
+<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+<div class="container-fluid py-5">
+<!-- 영화 제목 -->
+<h1 class="display-5 fw-bold">${title}</h1>
+<!-- 영화 요약 내용 -->
+<p class="col-md-8 fs-4">${overview}</p></div>
+<button id="detailedInfobtn" type="button" class="btn btn-outline-light">상세정보</button>
+<button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
+</div>
 </div>`;
 
-  cardDetailList.insertAdjacentHTML('afterbegin', tempHtml);
-  // Scroll adjustment function
-  // 1. 상세정보 scroll adjustment
-  const detailedBtn = document.querySelector('#detailedInfobtn');
-  detailedBtn.addEventListener('click', function () {
-    console.log(detailedBtn);
-    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
-    window.scrollTo({ left: 0, top: 500 });
-    // console.log(window.scrollTo);
-  });
+    cardDetailList.insertAdjacentHTML('afterbegin', tempHtml);
+    // Scroll adjustment function
+    // 1. 상세정보 scroll adjustment
+    const detailedBtn = document.querySelector('#detailedInfobtn');
+    detailedBtn.addEventListener('click', function () {
+        console.log(detailedBtn);
+        // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+        window.scrollTo({ left: 0, top: 520 });
+        // console.log(window.scrollTo);
+    });
 
-  // 2. 리뷰 scroll adjustment
-  const rewiewbtn = document.querySelector('#rewiewbtn');
-  rewiewbtn.addEventListener('click', function () {
-    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
-    window.scrollTo({ left: 0, top: 800 });
-  });
+    // 2. 리뷰 scroll adjustment
+    const rewiewbtn = document.querySelector('#rewiewbtn');
+    rewiewbtn.addEventListener('click', function () {
+        // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+        window.scrollTo({ left: 0, top: 850 });
+    });
 
-  let tempCastHtml = `<div
+    let tempCastHtml = `<div
 style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 200px 5px 280px; padding: 10px 50px 10px 50px;">
 
 <div class="moviesText">
@@ -159,19 +158,19 @@ style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(
     </div>
 </div>
 </div>`;
-  moviedetailCast.insertAdjacentHTML('beforeend', tempCastHtml);
+    moviedetailCast.insertAdjacentHTML('beforeend', tempCastHtml);
 };
 
 export const movieVideo = async (id) => {
-  const movieVideo = await fetchMovieVideo(id);
-  let key = '';
-  let check = 'Trailer';
-  for (let i = 0; i < movieVideo.length; i++) {
-    if (movieVideo[i].type === check) {
-      key += movieVideo[i].key;
+    const movieVideo = await fetchMovieVideo(id);
+    let key = '';
+    let check = 'Trailer';
+    for (let i = 0; i < movieVideo.length; i++) {
+        if (movieVideo[i].type === check) {
+            key += movieVideo[i].key;
+        }
     }
-  }
-  const videoLink = document.querySelector('#homeLink');
-  let tempVideo_html = `<li><a href="https://www.youtube.com/watch?v=${key}" class="nav-link px-2 text-white">예고편</a></li>`;
-  videoLink.insertAdjacentHTML('afterbegin', tempVideo_html);
+    const videoLink = document.querySelector('#homeLink');
+    let tempVideo_html = `<li><a href="https://www.youtube.com/watch?v=${key}" class="nav-link px-2 text-white">예고편</a></li>`;
+    videoLink.insertAdjacentHTML('afterbegin', tempVideo_html);
 };
