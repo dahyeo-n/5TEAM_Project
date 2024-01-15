@@ -1,23 +1,27 @@
+import { fetchmovieList } from './api.js';
+import { fetchmovieCast } from './api.js';
+import { fetchMovieDetails } from './api.js';
+import { fetchMovieVideo } from './api.js';
+
 // movie 카드 함수
 export const drawmovie = async () => {
   const movieList = await fetchmovieList();
-  console.log(movieList);
 
   const cardList = document.querySelector('#main-card');
   cardList.innerHTML = movieList
     .map(
       (movie) => `
-      <div id="col" class="col" >
-      <a href = "#">
-      <div id="cardId" class="card h-100" onclick="location.href='detailed.html'">
-  <img id="${movie.id}" class="image" src="https://image.tmdb.org/t/p/original${movie.poster_path}"> 
-  <div class="card-body">
-  <h5 class="card-title" >${movie.title}</h5>
-  <p class="card-text" >${movie.overview}</p>
-  <p class="card-average" >${movie.vote_average}</p>
-</div>
-  </div>
-  </a> 
+    <div id="col" class="col" >
+    <a href = "#">
+    <div id="cardId" class="card h-100" onclick="location.href='detailed.html'">
+    <img id="${movie.id}" class="image" src="https://image.tmdb.org/t/p/original${movie.poster_path}"> 
+    <div class="card-body">
+    <h5 class="card-title"><b>${movie.title}</b></h5>
+    <p class="card-text" >${movie.overview}</p>
+    <p class="card-average" >[평점] ${movie.vote_average}</p>
+    </div>
+    </div>
+    </a> 
 </div>`
     )
     .join('');
@@ -72,7 +76,24 @@ export const drawMovieDetails = async (id) => {
       <button id="rewiewbtn" type="button" class="btn btn-outline-light">리뷰</button>
   </div>
 </div>`;
+
   cardDetailList.insertAdjacentHTML('afterbegin', tempHtml);
+  // Scroll adjustment function
+  // 1. 상세정보 scroll adjustment
+  const detailedBtn = document.querySelector('#detailedInfobtn');
+  detailedBtn.addEventListener('click', function () {
+    console.log(detailedBtn);
+    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+    window.scrollTo({ left: 0, top: 500 });
+    // console.log(window.scrollTo);
+  });
+
+  // 2. 리뷰 scroll adjustment
+  const rewiewbtn = document.querySelector('#rewiewbtn');
+  rewiewbtn.addEventListener('click', function () {
+    // left: 가로축(x좌표), top: 세로축(y좌표) 지정
+    window.scrollTo({ left: 0, top: 800 });
+  });
 
   let tempCastHtml = `<div
 style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(0, 0, 0); margin: 5px 200px 5px 280px; padding: 10px 50px 10px 50px;">
@@ -141,69 +162,16 @@ style="border: whitesmoke 0px solid; border-radius: 15px; background-color: rgb(
   moviedetailCast.insertAdjacentHTML('beforeend', tempCastHtml);
 };
 
-// API MOVIE 데이터 함수
-async function fetchmovieList() {
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00',
-    },
-  };
-
-  try {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=ko-KO&page=1&sort_by=popularity.desc',
-      options
-    );
-    const data = await response.json();
-    return data.results;
-  } catch (err) {
-    console.error(err);
+export const movieVideo = async (id) => {
+  const movieVideo = await fetchMovieVideo(id);
+  let key = '';
+  let check = 'Trailer';
+  for (let i = 0; i < movieVideo.length; i++) {
+    if (movieVideo[i].type === check) {
+      key += movieVideo[i].key;
+    }
   }
-}
-
-// API CAST 데이터 함수
-async function fetchmovieCast(id) {
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00',
-    },
-  };
-  try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?language=ko-KO`,
-      options
-    );
-    const data = await response.json();
-    return data.cast;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-async function fetchMovieDetails(id) {
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzBjZjNhMjBlZGNhZjMxMmIwMjZhZjM1NzhiMTAyOCIsInN1YiI6IjY1OTRmNDQ5NTkwN2RlNDU5OTYzYmZkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jIu9EyJ2GTlw8ENNNk9IuC76BKQ_Ii0J4QAWX_-Jo00',
-    },
-  };
-
-  try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?language=ko-KO`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
-}
+  const videoLink = document.querySelector('#homeLink');
+  let tempVideo_html = `<li><a href="https://www.youtube.com/watch?v=${key}" class="nav-link px-2 text-white">예고편</a></li>`;
+  videoLink.insertAdjacentHTML('afterbegin', tempVideo_html);
+};
