@@ -45,3 +45,7 @@ body {
 #detailedInfobtn {
     margin-right: 5px;
 }
+
+.pw {
+    display: none;
+}
