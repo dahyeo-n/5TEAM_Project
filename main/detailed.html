@@ -64,19 +64,28 @@
         <!-- 검색창 인풋-버튼 사이 간격 좁히고 싶음 -->
         <form id="search">
           <div class="searchbtninDetailed">
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-              <input id="input-form" type="search" class="form-control form-control-dark text-bg-dark"
-                placeholder="Movie name" aria-label="Search" />
+            <form class="col-12 col-lg-auto mb-lg-0 me-lg-3" role="search">
+              <input
+                id="input-form"
+                type="search"
+                class="form-control form-control-dark text-bg-dark"
+                placeholder="Movie name"
+                aria-label="Search"
+              />
             </form>
             <div class="text-end">
-              <button id="searchBtn" type="button" class="btn btn-outline-light me-2">
+              <button
+                id="searchBtn"
+                type="button"
+                class="btn btn-outline-light me-2"
+              >
                 Search
               </button>
             </div>
           </div>
         </form>
-    </div>
-</header>
+      </div>
+    </header>
 
     <main id="moviedetail"></main>
 
@@ -87,27 +96,23 @@
   <footer>
     <!-- 댓글 기능 -->
     <!-- nameinput -->
-    <div class="toggleVal">
-      <div class="form-floating mb-3">
+    <div class="reviewBox">
+      <div id="review-txt" class="form-floating">
         <input type="text" class="form-control" id="floatingInput" />
         <label for="floatingInput">이름</label>
       </div>
       <!-- pwinput -->
-      <div class="form-floating">
+      <div id="review-txt" class="form-floating">
         <input type="password" class="form-control" id="floatingPassword" />
         <label for="floatingPassword">비밀번호</label>
       </div>
       <!-- review -->
-      <div class="form-floating">
-        <textarea
-          class="review form-control"
-          id="floatingTextarea2"
-          style="height: 100px"
-        ></textarea>
+      <div id="review-txt" class="form-floating">
+        <textarea class="review form-control" id="floatingTextarea2"></textarea>
         <label for="floatingTextarea2">리뷰</label>
       </div>
       <!-- starCnt -->
-      <div class="form-floating">
+      <div id="review-txt" class="form-floating">
         <select
           class="starCnt form-select"
           id="floatingSelect"
@@ -122,25 +127,21 @@
         </select>
         <label for="floatingSelect">⭐</label>
       </div>
-      <button
-        id="inputBtn"
-        type="button"
-        class="btn btn-outline-dark"
-        style="display: block"
-      >
-        입력
-      </button>
-      <button
-        id="reviseBtn"
-        type="button"
-        class="btn btn-outline-dark"
-        style="display: none"
-      >
-        수정완료
-      </button>
+      <div class="reviewbtn">
+        <button id="inputBtn" type="button" class="btn btn-outline-light">
+          입력
+        </button>
+        <button
+          id="reviseBtn"
+          type="button"
+          class="btn btn-outline-light"
+          style="display: none"
+        >
+          수정완료
+        </button>
+      </div>
+      <!-- Inner HTML -->
+      <div class="createForm" style="font-weight: bold; color: white"></div>
     </div>
-
-    <!-- Inner HTML -->
-    <div class="createForm"></div>
   </footer>
 </html>

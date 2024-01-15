@@ -3,11 +3,14 @@ import { searchMovie } from './search.js';
 
 drawmovie();
 
-let inputformbtn = document.querySelector('.movie-search-inner');
-inputformbtn.addEventListener('submit', (event) => {
+let inputform = document.querySelector('.search');
+inputform.addEventListener('submit', (event) => {
   event.preventDefault();
   searchMovie();
 });
+
+let inputformbtn = document.querySelector('#searchbtn');
+inputformbtn.addEventListener('click', searchMovie);
 
 //gotop 기능 구현
 const gotop = document.querySelector('.gotop');
