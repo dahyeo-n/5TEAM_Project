@@ -126,13 +126,12 @@ delBtns.forEach((deleteBtn) => {
   deleteBtn.addEventListener('click', function (e) {
     e.preventDefault();
     let deleteBtnId = parseInt(deleteBtn.dataset.id); //삭제 버튼의 ID값
-
-    let pwHiddenFrom = deleteBtn.closest('.valueBox').querySelector('.pw'); //각각의 버튼의 pw,Btn에 이벤트를 걸어줘야함
+    let pwHiddenFrom = deleteBtn.closest('.valueBox').querySelector('.pw'); //각각의 버튼의 pw,Btn에 이벤트 따로 걸어줘야함
     let pwSubmitBtn = deleteBtn.closest('.valueBox').querySelector('.pwBtn');
+    let pwInput = deleteBtn.closest('.valueBox').querySelector('.pwInput');
     pwHiddenFrom.style.display = 'block';
     //비밀번호 확인버튼 click
     pwSubmitBtn.addEventListener('click', function () {
-      let pwInput = document.querySelector('.pwInput');
       let pwInputVal = pwInput.value; // 입력한 비밀번호
       let pwTargetId = inputArray.find((idVal) => idVal.id === deleteBtnId); //inputArray의 id값과 같은 값 추출
       //비밀번호 Validation
@@ -156,18 +155,19 @@ let hiddenId = document.querySelectorAll('.hiddenId');
 reviseBtns.forEach((reviseBtn) => {
   reviseBtn.addEventListener('click', function (e) {
     e.preventDefault();
-    let reviseIdString = reviseBtn.dataset.id;
-    let reviseBtnId = parseInt(reviseIdString); //클릭한 ID값
     let pwHiddenFrom = reviseBtn.closest('.valueBox').querySelector('.pw');
     let pwSubmitBtn = reviseBtn.closest('.valueBox').querySelector('.pwBtn');
+    let pwInput = reviseBtn.closest('.valueBox').querySelector('.pwInput');
+    let reviseIdString = reviseBtn.dataset.id;
+    let reviseBtnId = parseInt(reviseIdString); //클릭한 ID값
     pwHiddenFrom.style.display = 'block';
     //비밀번호 확인 버튼
     pwSubmitBtn.addEventListener('click', function () {
-      let pwInput = document.querySelector('.pwInput');
       let pwInputVal = pwInput.value; //입력한 비밀번호
       let pwTargetId = inputArray.find(
         (reviseVal) => reviseVal.id === reviseBtnId
-      ); //inputArray의 id값이 같은 객체 추출
+      );
+      console.log(pwInputVal); //inputArray의 id값이 같은 객체 추출
       //비밀번호 Validation
       if (pwInputVal === pwTargetId.pw) {
         inputBtn.style.display = 'none'; //입력확인 버튼 none
