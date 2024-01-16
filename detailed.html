@@ -100,16 +100,21 @@
       <div id="review-txt" class="form-floating">
         <input type="text" class="form-control" id="floatingInput" />
         <label for="floatingInput">이름</label>
+        <span class="validation emptyName error">이름을 입력해주세요</span>
       </div>
       <!-- pwinput -->
       <div id="review-txt" class="form-floating">
         <input type="password" class="form-control" id="floatingPassword" />
         <label for="floatingPassword">비밀번호</label>
+        <span class="validation emptyPassword error"
+          >비밀번호를 입력해주세요</span
+        >
       </div>
       <!-- review -->
       <div id="review-txt" class="form-floating">
         <textarea class="review form-control" id="floatingTextarea2"></textarea>
         <label for="floatingTextarea2">리뷰</label>
+        <span class="validation emptyReiview error">리뷰를 입력해주세요</span>
       </div>
       <!-- starCnt -->
       <div id="review-txt" class="form-floating">
@@ -126,6 +131,7 @@
           <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
         </select>
         <label for="floatingSelect">⭐</label>
+        <span class="validation emptyStar error">별점을 입력해주세요</span>
       </div>
       <div class="reviewbtn">
         <button id="inputBtn" type="button" class="btn btn-outline-light">
