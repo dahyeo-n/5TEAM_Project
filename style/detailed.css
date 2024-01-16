@@ -53,6 +53,10 @@
   align-items: center;
 }
 
+#searchBtn {
+  margin-left: 7px;
+}
+
 .searchbtninDetailed {
   width: 380px;
   display: flex;
@@ -91,7 +95,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+
 .validation {
   color: red;
 }
